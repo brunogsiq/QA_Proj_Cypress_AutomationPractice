@@ -306,7 +306,7 @@ context('Tela Cadastro.', () =>
 				});
 			});
 
-			describe.only('Preenchimento válido.', () => 
+			describe('Preenchimento válido.', () => 
 			{
 				let complemento = 1;
 
