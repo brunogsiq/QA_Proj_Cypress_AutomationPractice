@@ -77,7 +77,7 @@ context('Tela Your Adress.', () =>
 							.and('contain.text', '01. Summary');
 				});
 
-				it(`${teste}.${complemento} - Tela Adress - Validar escolha de produto + adição ao carrinho.`, () => 
+				it(`${teste}.${++complemento} - Tela Adress - Validar escolha de produto + adição ao carrinho.`, () => 
 				{
 					cy.get('.logo')
 						.click();
@@ -126,7 +126,7 @@ context('Tela Your Adress.', () =>
 						.click();
 				});
 
-				it(`${teste}.${complemento} - Tela Transporte - Validar escolha de produto + adição ao carrinho.`, () => 
+				it(`${teste}.${++complemento} - Tela Transporte - Validar escolha de produto + adição ao carrinho.`, () => 
 				{
 					cy.get('.logo')
 						.click();
@@ -180,7 +180,7 @@ context('Tela Your Adress.', () =>
 						.and('contain.text', '04. Shipping');
 				});
 
-				it(`${teste}.${complemento} - Tela Termos de serviço - Validar escolha de produto + adição ao carrinho.`, () => 
+				it(`${teste}.${++complemento} - Tela Termos de serviço - Validar escolha de produto + adição ao carrinho.`, () => 
 				{
 					cy.get('.logo')
 						.click();
@@ -241,7 +241,7 @@ context('Tela Your Adress.', () =>
 						.click();
 				});
 
-				it(`${teste}.${complemento} - Tela Pagamento - Validar escolha de produto + adição ao carrinho.`, () => 
+				it(`${teste}.${++complemento} - Tela Pagamento - Validar escolha de produto + adição ao carrinho.`, () => 
 				{
 					cy.get('.logo')
 						.click();
