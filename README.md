@@ -1,9 +1,4 @@
-Boa, já tem bastante material pronto para um **README** profissional 🚀
-Vou te montar um modelo em Markdown que reflete a estrutura do projeto, uso de **Pages**, **Custom Commands**, execução dos **Smoke Tests** e geração de relatórios **Mochawesome**.
-
----
-
-# 🛒 QA Proj Cypress ShopPolyme
+# 🛒 QA Proj Cypress Automation Practice
 
 Projeto de automação de testes end-to-end com **Cypress** no e-commerce demo [Automation Practice](http://www.automationpractice.pl/index.php).
 Foram implementados testes **Smoke** e **E2E** para fluxos críticos: **Cadastro, Login, Endereço e Carrinho de Compras**.
@@ -13,7 +8,7 @@ Foram implementados testes **Smoke** e **E2E** para fluxos críticos: **Cadastro
 ## 📂 Estrutura do Projeto
 
 ```
-QA_Proj_Cypress_ShopPolyme/
+QA_Proj_Cypress_AutomationPractice
 ├── cypress/
 │   ├── e2e/                  # Casos de teste organizados por tela/fluxo
 │   │   ├── 00 - Smoke Test
@@ -53,8 +48,7 @@ QA_Proj_Cypress_ShopPolyme/
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/brunogsiq/QA_Proj_Cypress_ShopPolyme.git
-   cd QA_Proj_Cypress_ShopPolyme
+   git clone https://github.com/brunogsiq/QA_Proj_Cypress_AutomationPractice.git
    ```
 
 2. Instale as dependências:
