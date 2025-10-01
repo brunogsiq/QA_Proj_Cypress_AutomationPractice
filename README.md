@@ -110,7 +110,6 @@ Exemplo de relatório:
 
 ## ⭐ Apoie o Projeto!
 
-Se este repositório te ajudou, **deixe uma estrela no GitHub** 🌟
-👉 [QA_Proj_Cypress_ShopPolyme](https://github.com/brunogsiq/QA_Proj_Cypress_ShopPolyme)
+Deixe sua estrelinha!!!
 
 ---
