@@ -54,3 +54,9 @@ Retorne ao terminal de comando.
 
         Adicione em cypress/support/e2e.js:
             import 'cypress-real-events/support';
+
+    2.5 - Iframe
+        npm install -D cypress-iframe
+
+        Adicione em support/commands
+            import 'cypress-iframe';

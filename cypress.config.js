@@ -17,6 +17,7 @@ module.exports = defineConfig({
 
 	e2e: {
 		baseUrl: "http://www.automationpractice.pl/index.php",
+		pageLoadTimeout: 120000,
 		defaultCommandTimeout: 9000,
 		experimentalRunAllSpecs: true,
 		hideXHRInCommandLog: true,

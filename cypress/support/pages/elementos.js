@@ -83,3 +83,79 @@ export class tela_Cadastro
         return cy.get('.account_creation')
     };
 };
+
+export class tela_Login 
+{
+    get input_Email() {
+        return cy.get('#email')
+    };
+
+    get input_Password() {
+        return cy.get('#passwd')
+    };
+
+    get botao_SignIn() {
+        return cy.get('#SubmitLogin')
+    };
+
+    get button_AddMyFirstAddress() {
+        return cy.get('.myaccount-link-list > li > a').eq(0)
+    }
+}
+
+export class tela_InformacoesPessoais
+{
+    get opcao_Mr() {
+        return cy.get('#id_gender1')
+    };
+
+    get input_PrimeiroNome() {
+        return cy.get('#customer_firstname')
+    };
+
+    get input_Sobrenome() {
+        return cy.get('#customer_lastname')
+    };
+
+    get input_Email() {
+        return cy.get('#email')
+    };
+
+    get input_Senha() {
+        return cy.get('#passwd')
+    };
+
+    get select_Dia() {
+        return cy.get('#days')
+    };
+
+    get select_Mes() {
+        return cy.get('#months')
+    };
+
+    get select_Ano() {
+        return cy.get('#years')
+    };
+
+    get botao_Register() {
+        return cy.get('#submitAccount')
+    };
+};
+
+export class tela_CadastroSucesso 
+{
+    get titulo_Tela() {
+        return cy.get('.page-heading')
+    };
+
+    get titulo_Tela_Conteudo() {
+        return 'My account'
+    };
+};
+
+export class tela_YourAdress
+{
+    get titulo_YourAdress() {
+        return cy.get('h1')
+    };  
+}

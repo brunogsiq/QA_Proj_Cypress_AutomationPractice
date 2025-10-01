@@ -1,9 +1,17 @@
 /// <reference types="cypress" />
 
-import { tela_Home, tela_Cadastro } from'../../support/pages/elementos';
+import { faker } from '@faker-js/faker'
+
+const randomName = faker.person.firstName();
+const randomLastName = faker.person.lastName();
+const randomMail = faker.internet.email();
+
+import { tela_Home, tela_Cadastro, tela_InformacoesPessoais, tela_CadastroSucesso } from'../../support/pages/elementos';
 
 const Tela_Home = new tela_Home();
 const Tela_Cadastro = new tela_Cadastro();
+const Tela_InformacoesPessoais = new tela_InformacoesPessoais();
+const Tela_CadastroSucesso = new tela_CadastroSucesso();
 
 context('Tela Cadastro.', () => 
 {
@@ -15,14 +23,6 @@ context('Tela Cadastro.', () =>
 	{
 		describe(`${cenario} - Validações de Fluxos Funcionais.`, () => 
 		{
-			beforeEach(() =>
-			{
-				cy.visit("/");
-
-				Tela_Home.botao_SignIn
-					.click();
-			});
-
 			afterEach(() =>
 			{
 				cy.clearAllLocalStorage();
@@ -33,6 +33,14 @@ context('Tela Cadastro.', () =>
 			describe('Preenchimento inválido.', () => 
 			{
 				let complemento = 1;
+
+				beforeEach(() =>
+				{
+					cy.visit("/");
+
+					Tela_Home.botao_SignIn
+						.click();
+				});
 
 				it(`${teste}.${complemento} - Validar preenchimento vazio.`, () => 
 				{
@@ -306,15 +314,23 @@ context('Tela Cadastro.', () =>
 				});
 			});
 
-			describe('Preenchimento válido.', () => 
+			describe('Preenchimento válido - Etapa E-mail.', () => 
 			{
 				let complemento = 1;
 
-				it(`${teste}.${++complemento} - Validar preenchimento com letra & @ & server & .com.`, () => 
+				beforeEach(() =>
+				{
+					cy.visit("/");
+
+					Tela_Home.botao_SignIn
+						.click();
+				});
+
+				it(`${teste}.${complemento} - Validar preenchimento com letra & @ & server & .com.`, () => 
 				{
 					//Passo - Dado que foi inserido conteúdo no campo email para criação de conta,
 					Tela_Cadastro.input_Email_Input
-						.type('QA@teste.com');	
+						.type('QAQA@teste.com');	
 
 					//Passo - Quando for realizado um evento de clique no botão 'Create an account',
 					Tela_Cadastro.botao_Create_Account
@@ -353,6 +369,71 @@ context('Tela Cadastro.', () =>
 					//Passo - Então deve ser exibida o modal de informações para criação de conta.
 					Tela_Cadastro.modal_Cadastro_InfoPessoais
 						.should('be.visible');
+				});
+			});
+
+			describe('Preenchimento válido - Etapa Informações pessoais.', () => 
+			{
+				let complemento = 1;
+
+				beforeEach(() =>
+				{
+					cy.visit("/")
+						Tela_Home.botao_SignIn
+							.click();
+
+					Tela_Cadastro.input_Email_Input
+							.type(randomName + randomLastName + '@server.com');
+							Tela_Cadastro.botao_Create_Account
+								.click();	
+				});
+
+				it(`${teste}.${complemento} - Validar preenchimento do formulário com sucesso.`, () => 
+				{ 
+					//Passo - Dado que o formulário foi preenchido com dados válidos
+					Tela_InformacoesPessoais.opcao_Mr
+						.check();
+					Tela_InformacoesPessoais.input_PrimeiroNome
+						.clear()
+						.type(randomName);
+						Tela_InformacoesPessoais.input_Sobrenome
+							.clear()
+							.type(randomLastName);
+							Tela_InformacoesPessoais.input_Email
+								.should('be.visible')
+								.and('have.attr', 'value', randomName + randomLastName + '@server.com');
+								Tela_InformacoesPessoais.input_Senha
+									.clear()
+									.type('123456QA');
+									Tela_InformacoesPessoais.select_Dia
+										.select('1');
+										Tela_InformacoesPessoais.select_Mes
+											.select('November');
+											Tela_InformacoesPessoais.select_Ano
+												.select('1986');
+
+					//Passo - Quando clicar na opção 'Register',
+					Tela_InformacoesPessoais.botao_Register
+						.click();
+
+					//Passo - Então deve ser exibida
+					cy.waitUntil(() =>
+						Tela_CadastroSucesso.titulo_Tela
+							.should('be.visible'));
+							Tela_CadastroSucesso.titulo_Tela
+								.should('be.visible')
+								.and('have.text', Tela_CadastroSucesso.titulo_Tela_Conteudo);
+
+							cy.url()
+								.should('be.equal', 'http://www.automationpractice.pl/index.php?controller=my-account');
+
+					const user = {
+						nome: randomName,
+						sobrenome: randomLastName,
+						login: randomName + randomLastName + '@server.com',
+						pass: '123456QA'
+					};
+					cy.writeFile('cypress/fixtures/usuario.json', user);
 				});
 			});
 		});

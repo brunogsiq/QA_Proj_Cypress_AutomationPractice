@@ -1,0 +1,1 @@
+import './01 - Login ao iniciar/5.3 - Tela Cart - Validacoes do fluxo e2E.cy.js';
