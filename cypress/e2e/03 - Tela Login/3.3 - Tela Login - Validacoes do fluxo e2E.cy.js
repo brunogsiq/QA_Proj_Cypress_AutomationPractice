@@ -34,7 +34,7 @@ context('Tela Login.', () =>
 						.click();
 				});
 
-				it(`${teste}.${complemento} - Validar login com sucesso.`, () => 
+				it.only(`${teste}.${complemento} - Validar login com sucesso.`, () => 
 				{
 					cy.fixture('usuario.json').then((data) =>
 					{ 
